@@ -1,13 +1,17 @@
 <div class="container flex flex-column align-items-center">
   <span class="mat-display-2 title-login">Log In</span>
-  <form class="example-form flex flex-column align-items-center">
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+  <form autocomplete="off" [formGroup]="loginForm" class="example-form flex flex-column align-items-center">
+    <mat-form-field class="example-full-width " appearance="fill">
+      <mat-label class=>Username</mat-label>
+      <input matInput formControlName="username">
     </mat-form-field>
+    <span *ngIf="isValid('username')" class="errors">Username is
+      required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="password">
     </mat-form-field>
+    <span *ngIf="isValid('password')" class="errors">Password is required</span>
   </form>
+  <button mat-raised-button color="primary" [disabled]="loginForm.invalid" type="submit">Log In</button>
 </div>

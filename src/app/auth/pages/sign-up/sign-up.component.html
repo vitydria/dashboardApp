@@ -1,29 +1,39 @@
 <div class="container flex flex-column align-items-center">
   <span class="mat-display-2 title-signup">Sign Up</span>
-  <form class="example-form flex flex-column align-items-center">
+  <form (ngSubmit)='submit()' autocomplete="off" [formGroup]="signupForm"
+    class="example-form flex flex-column align-items-center">
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Username</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="username">
     </mat-form-field>
+    <span *ngIf="isValid('username')" class="errors">Username is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>First Name</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="firstname">
     </mat-form-field>
+    <span *ngIf="isValid('firstname')" class="errors">First Name is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Last Name</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="lastname">
     </mat-form-field>
+    <span *ngIf="isValid('lastname')" class="errors">Last
+      Name is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="email">
     </mat-form-field>
+    <span *ngIf="isValid('email')" class="errors">Email is
+      required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="password">
     </mat-form-field>
+    <span *ngIf="isValid('password')" class="errors">Password is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Confirm password</mat-label>
-      <input matInput placeholder="Ex. Pizza" value="">
+      <input matInput formControlName="confirmPassword">
     </mat-form-field>
+    <span *ngIf="isValid('confirmPassword')" class="errors">Confirm password</span>
   </form>
+  <button mat-raised-button color="primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
 </div>
