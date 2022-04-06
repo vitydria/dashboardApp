@@ -26,14 +26,14 @@
       required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
-      <input matInput formControlName="password">
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
     </mat-form-field>
     <span *ngIf="isValid('password')" class="errors">Password is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Confirm password</mat-label>
-      <input matInput formControlName="confirmPassword">
+      <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
     </mat-form-field>
     <span *ngIf="isValid('confirmPassword')" class="errors">Confirm password</span>
+    <button mat-raised-button color="primary" type="submit">Sign Up</button>
   </form>
-  <button mat-raised-button color="primary" [disabled]="signupForm.invalid" type="submit">Sign Up</button>
 </div>

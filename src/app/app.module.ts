@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
 import { HomeComponent } from './shared/home/home.component';
 
+
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent, HomeComponent],
   imports: [
@@ -21,6 +22,7 @@ import { HomeComponent } from './shared/home/home.component';
     MaterialModule,
     AuthModule,
     AppRoutingModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -6,16 +6,28 @@ import { map, shareReplay } from 'rxjs/operators';
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss']
+  styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
+  showDashboard: boolean = true;
+  showAdd: boolean = false;
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+  show(component: string): void {
+    if (component === 'dash') {
+      this.showDashboard = true;
+      this.showAdd = false;
+    } else {
+      this.showAdd = true;
+      this.showDashboard = false;
+    }
+  }
+
+  isHandset$: Observable<boolean> = this.breakpointObserver
+    .observe(Breakpoints.Handset)
     .pipe(
-      map(result => result.matches),
+      map((result) => result.matches),
       shareReplay()
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}
-
 }

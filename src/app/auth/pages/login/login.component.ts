@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
+
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,6 +19,8 @@ export class LoginComponent {
     username: new FormControl(''),
     password: new FormControl(''),
   }); */
+
+  hide: boolean = true;
 
   loginForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
@@ -29,5 +34,19 @@ export class LoginComponent {
     );
   }
 
-  constructor(private formBuilder: FormBuilder) {}
+  submit() {
+    if (this.loginForm.invalid) {
+      this.loginForm.markAllAsTouched();
+      return;
+    }
+
+    this.authService.login(this.loginForm);
+
+    this.loginForm.reset();
+  }
+
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 }

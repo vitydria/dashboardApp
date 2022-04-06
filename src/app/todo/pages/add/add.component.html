@@ -1,0 +1,13 @@
+<div class="flex flex-column align-items-start justify-content-center mt-5 ml-5 w-min">
+  <form (ngSubmit)='save()' autocomplete="off" [formGroup]="cardForm">
+    <mat-form-field appearance="fill">
+      <mat-label>title</mat-label>
+      <input matInput formControlName="title">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>description</mat-label>
+      <textarea matInput formControlName="desc"></textarea>
+    </mat-form-field>
+    <button class="align-self-center" mat-raised-button color="accent">Add</button>
+  </form>
+</div>

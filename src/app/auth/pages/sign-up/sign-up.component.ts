@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -7,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent {
+  hide: boolean = true;
   signupForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
     firstname: ['', [Validators.required, Validators.minLength(3)]],
@@ -24,7 +26,16 @@ export class SignUpComponent {
   }
 
   submit() {
-    console.log(this.signupForm.value);
+    if (this.signupForm.invalid) {
+      this.signupForm.markAllAsTouched();
+      return;
+    }
+
+    this.authService.signup(this.signupForm);
+    this.signupForm.reset();
   }
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService
+  ) {}
 }
