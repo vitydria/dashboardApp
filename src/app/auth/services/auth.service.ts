@@ -13,7 +13,9 @@ export class AuthService {
   pass: string = '';
 
   signup(form: FormGroup) {
-    localStorage.setItem('user', JSON.stringify(form.value));
+    const idUser = Math.floor(Math.random() * (999 - 1)) + 1;
+    localStorage.setItem(`user/${idUser}`, JSON.stringify(form.value));
+    this.router.navigate(['']);
   }
 
   login(form: FormGroup) {
@@ -29,8 +31,9 @@ export class AuthService {
         this.username === form.value.username &&
         this.pass === form.value.password
       ) {
-        console.log('Logeao');
         this.router.navigate(['/todo/dashboard']);
+      } else {
+        form.markAllAsTouched();
       }
     }
   }

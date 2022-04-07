@@ -6,7 +6,15 @@ import { TodoService } from '../../services/todo.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styles: [''],
+  styles: [
+    `
+      .errors {
+        font-size: smaller;
+        color: rgb(255, 48, 48);
+        align-self: flex-start;
+      }
+    `,
+  ],
 })
 export class AddComponent implements OnInit {
   constructor(
@@ -14,7 +22,7 @@ export class AddComponent implements OnInit {
     private todoService: TodoService
   ) {}
 
-  newCard: Cards = {
+  newCard: Partial<Cards> = {
     title: '',
     desc: '',
   };
@@ -24,13 +32,30 @@ export class AddComponent implements OnInit {
     desc: ['', [Validators.required]],
   });
 
-  save() {
+  isValid(field: string) {
+    return (
+      this.cardForm.controls[field].errors &&
+      this.cardForm.controls[field].touched
+    );
+  }
+
+  submit() {
+    if (this.cardForm.invalid) {
+      this.cardForm.markAllAsTouched();
+      return;
+    }
+
     this.newCard.title = this.cardForm.value.title;
     this.newCard.desc = this.cardForm.value.desc;
 
     this.todoService
       .addCard(this.newCard)
       .subscribe((res) => console.log('Res: ', res));
+
+    this.cardForm.reset();
+    Object.keys(this.cardForm.controls).forEach((key) => {
+      this.cardForm.get(key)!.setErrors(null);
+    });
   }
 
   ngOnInit(): void {}

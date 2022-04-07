@@ -1,13 +1,16 @@
-<div class="flex flex-column align-items-start justify-content-center mt-5 ml-5 w-min">
-  <form (ngSubmit)='save()' autocomplete="off" [formGroup]="cardForm">
+<div>
+  <form (ngSubmit)='submit()' autocomplete="off" [formGroup]="cardForm"
+    class="flex flex-column align-items-start justify-content-center mt-5 ml-5 w-min">
     <mat-form-field appearance="fill">
       <mat-label>title</mat-label>
       <input matInput formControlName="title">
     </mat-form-field>
+    <span class="errors" *ngIf="isValid('title')">title is required</span>
     <mat-form-field appearance="fill">
       <mat-label>description</mat-label>
       <textarea matInput formControlName="desc"></textarea>
     </mat-form-field>
-    <button class="align-self-center" mat-raised-button color="accent">Add</button>
+    <span class="errors" *ngIf="isValid('desc')">description is required</span>
+    <button class="align-self-center mt-2" mat-raised-button color="accent" type="submit">Add</button>
   </form>
 </div>

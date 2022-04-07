@@ -1,5 +1,10 @@
 <div class="container flex flex-column align-items-center">
-  <span class="mat-display-2 title-signup">Sign Up</span>
+  <span class="title-signup mb-5">Sign Up <mat-icon aria-hidden="false" aria-label="Example home icon"
+      class="icon-view">
+      <span class="material-icons-outlined">
+        app_registration
+      </span>
+    </mat-icon></span>
   <form (ngSubmit)='submit()' autocomplete="off" [formGroup]="signupForm"
     class="example-form flex flex-column align-items-center">
     <mat-form-field class="example-full-width" appearance="fill">
@@ -8,16 +13,16 @@
     </mat-form-field>
     <span *ngIf="isValid('username')" class="errors">Username is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>First Name</mat-label>
+      <mat-label>First name</mat-label>
       <input matInput formControlName="firstname">
     </mat-form-field>
-    <span *ngIf="isValid('firstname')" class="errors">First Name is required</span>
+    <span *ngIf="isValid('firstname')" class="errors">First name is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Last Name</mat-label>
+      <mat-label>Last name</mat-label>
       <input matInput formControlName="lastname">
     </mat-form-field>
     <span *ngIf="isValid('lastname')" class="errors">Last
-      Name is required</span>
+      name is required</span>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
@@ -34,6 +39,6 @@
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
     </mat-form-field>
     <span *ngIf="isValid('confirmPassword')" class="errors">Confirm password</span>
-    <button mat-raised-button color="primary" type="submit">Sign Up</button>
+    <button class="mt-4" mat-raised-button color="primary" type="submit">Sign Up</button>
   </form>
 </div>
