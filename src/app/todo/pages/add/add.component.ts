@@ -28,6 +28,9 @@ export class AddComponent implements OnInit {
     this.newCard.title = this.cardForm.value.title;
     this.newCard.desc = this.cardForm.value.desc;
 
+    this.cardForm.reset();
+    this.cardForm.markAsUntouched();
+
     this.todoService
       .addCard(this.newCard)
       .subscribe((res) => console.log('Res: ', res));

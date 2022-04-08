@@ -14,6 +14,26 @@
       "title": "Eat",
       "desc": "Pizza time",
       "id": 3
+    },
+    {
+      "title": "Buy a smartphone",
+      "desc": "go to ajota and buy a smartphone",
+      "id": 4
+    },
+    {
+      "title": "Buy a smartphone",
+      "desc": "go to ajota and buy a smartphone",
+      "id": 5
+    },
+    {
+      "title": "take sun",
+      "desc": "get out ",
+      "id": 6
+    },
+    {
+      "title": "mall",
+      "desc": "buy clothes",
+      "id": 7
     }
   ]
 }

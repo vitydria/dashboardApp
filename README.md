@@ -1,3 +1,15 @@
+#Para poder ejecutar este proyecto debes tener instalado npm y nvm
+
+#Instala json-server
+Abre la terminal como administrador y ejecuta npm install -g json-server
+
+#Instala Angular CLI
+Abre la terminal como administrador y ejecuta npm install -g @angular-cli
+
+#Una vez que abras la carpeta del proyecto primeramente instalar los node_modules, con el comando npm install
+
+Luego debes correr en una terminal de vs code ng serve -o para levantar el proyecto y en otra terminal de vs code debes correr npm run backend para la base de datos que maneja las cards
+
 # DashboardApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.

@@ -28,6 +28,7 @@ export class SignUpComponent {
   submit() {
     if (this.signupForm.invalid) {
       this.signupForm.markAllAsTouched();
+      console.log(this.signupForm.value);
       return;
     }
 

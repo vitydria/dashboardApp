@@ -13,7 +13,9 @@ export class AuthService {
   pass: string = '';
 
   signup(form: FormGroup) {
+    console.log(form.value);
     localStorage.setItem('user', JSON.stringify(form.value));
+    this.router.navigate(['']);
   }
 
   login(form: FormGroup) {
@@ -29,7 +31,6 @@ export class AuthService {
         this.username === form.value.username &&
         this.pass === form.value.password
       ) {
-        console.log('Logeao');
         this.router.navigate(['/todo/dashboard']);
       }
     }
