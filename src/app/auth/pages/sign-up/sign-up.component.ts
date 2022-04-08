@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
@@ -34,7 +39,14 @@ export class SignUpComponent {
 
     this.authService.signup(this.signupForm);
     this.signupForm.reset();
+
+    this.signupForm.reset();
+
+    Object.keys(this.signupForm.controls).forEach((key) => {
+      this.signupForm.get(key)!.setErrors(null);
+    });
   }
+
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService

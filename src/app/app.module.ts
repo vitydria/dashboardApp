@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { HttpClientModule } from '@angular/common/http';
+=======
+import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+
+>>>>>>> dee997b597972b9f0361814724e8c89e773a04bf
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -15,13 +21,17 @@ import { HomeComponent } from './shared/home/home.component';
 @NgModule({
   declarations: [AppComponent, ErrorPageComponent, HomeComponent],
   imports: [
+    HttpClientModule,
     BrowserModule,
     BrowserAnimationsModule,
     SharedModule,
     MaterialModule,
     AuthModule,
     AppRoutingModule,
+<<<<<<< HEAD
     HttpClientModule,
+=======
+>>>>>>> dee997b597972b9f0361814724e8c89e773a04bf
   ],
   providers: [],
   bootstrap: [AppComponent],

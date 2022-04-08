@@ -13,8 +13,13 @@ export class AuthService {
   pass: string = '';
 
   signup(form: FormGroup) {
+<<<<<<< HEAD
     console.log(form.value);
     localStorage.setItem('user', JSON.stringify(form.value));
+=======
+    const idUser = Math.floor(Math.random() * (999 - 1)) + 1;
+    localStorage.setItem(`user/${idUser}`, JSON.stringify(form.value));
+>>>>>>> dee997b597972b9f0361814724e8c89e773a04bf
     this.router.navigate(['']);
   }
 
@@ -32,6 +37,8 @@ export class AuthService {
         this.pass === form.value.password
       ) {
         this.router.navigate(['/todo/dashboard']);
+      } else {
+        form.markAllAsTouched();
       }
     }
   }

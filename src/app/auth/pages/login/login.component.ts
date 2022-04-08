@@ -21,6 +21,7 @@ export class LoginComponent {
   }); */
 
   hide: boolean = true;
+  notLogin = false;
 
   loginForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
@@ -42,7 +43,13 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm);
 
+    this.notLogin = true;
+
     this.loginForm.reset();
+    this.loginForm.reset();
+    Object.keys(this.loginForm.controls).forEach((key) => {
+      this.loginForm.get(key)!.setErrors(null);
+    });
   }
 
   constructor(

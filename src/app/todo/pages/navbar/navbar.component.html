@@ -3,10 +3,19 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <button mat-list-item (click)="show('dash')">Dashboard</button>
-      <button mat-list-item (click)="show('add')">Add</button>
-      <button mat-list-item>Messages</button>
-      <button mat-list-item>Settings</button>
+      <button mat-list-item (click)="show('dash')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">dashboard</mat-icon>Dashboard
+      </button>
+      <button mat-list-item (click)="show('add')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">add
+        </mat-icon> Add
+      </button>
+      <button mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">chat</mat-icon>Messages
+      </button>
+      <button mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">settings</mat-icon>Settings
+      </button>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

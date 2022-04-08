@@ -1,5 +1,6 @@
 <div class="container flex flex-column align-items-center">
-  <span class="mat-display-2 title-login">Log In</span>
+  <span class="title-login mb-5">Log In<mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">
+      login</mat-icon></span>
   <form (ngSubmit)='submit()' autocomplete="off" [formGroup]="loginForm"
     class="example-form flex flex-column align-items-center">
     <mat-form-field class="example-full-width " appearance="fill">
@@ -13,6 +14,12 @@
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
     </mat-form-field>
     <span *ngIf="isValid('password')" class="errors">Password is required</span>
-    <button mat-raised-button color="primary" type="submit">Log In</button>
+    <button mat-raised-button color="primary" class="mt-4" type="submit">Log In</button>
   </form>
+  <div class="flex flex-row justify-content-between mt-5">
+    <button mat-button color="primary" [routerLink]="['/auth/signup']"
+      routerLinkActive="router-link-active">signup</button>
+    <button mat-button color="primary">forgot password?</button>
+  </div>
+  <span *ngIf="notLogin" class="errors-login">email or password are incorrect</span>
 </div>

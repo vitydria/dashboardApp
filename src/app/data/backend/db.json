@@ -1,21 +1,12 @@
 {
   "todo": [
     {
-      "id": 1,
-      "title": "Walk",
-      "desc": "Go to walk with my dog"
-    },
-    {
-      "id": 2,
-      "title": "Hair",
-      "desc": "Take a cuthair"
-    },
-    {
-      "title": "Eat",
-      "desc": "Pizza time",
+      "title": "Find a pet",
+      "desc": "dog pet or whatever but I need a pet",
       "id": 3
     },
     {
+<<<<<<< HEAD
       "title": "Buy a smartphone",
       "desc": "go to ajota and buy a smartphone",
       "id": 4
@@ -34,6 +25,36 @@
       "title": "mall",
       "desc": "buy clothes",
       "id": 7
+=======
+      "title": "Hola",
+      "desc": "Que tal",
+      "id": 4
+    },
+    {
+      "title": "Haa",
+      "desc": "aaaa",
+      "id": 5
+    },
+    {
+      "title": "Hola",
+      "desc": "Qmas",
+      "id": 6
+    },
+    {
+      "title": "Title",
+      "desc": "Desc",
+      "id": 8
+    },
+    {
+      "title": "hello",
+      "desc": "whats up",
+      "id": 9
+    },
+    {
+      "title": "buy a pony",
+      "desc": "a pony car",
+      "id": 10
+>>>>>>> dee997b597972b9f0361814724e8c89e773a04bf
     }
   ]
 }
