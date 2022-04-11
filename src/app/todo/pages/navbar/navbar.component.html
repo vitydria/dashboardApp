@@ -25,7 +25,7 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>To - Do!</span>
-      <button mat-raised-button class="button-color" routerLink="">Log out</button>
+      <button mat-raised-button class="button-color" (click)="logout()">Log out</button>
     </mat-toolbar>
     <!-- Add Content Here -->
     <app-dashboard *ngIf="showDashboard"></app-dashboard>

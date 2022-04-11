@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/home/home.component';
 
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,8 @@ const routes: Routes = [
   {
     path: 'todo',
     loadChildren: () => import('./todo/todo.module').then((m) => m.TodoModule),
+    canLoad: [AuthGuard],
+    canActivate: [AuthGuard],
   },
   { path: '', component: HomeComponent },
   {

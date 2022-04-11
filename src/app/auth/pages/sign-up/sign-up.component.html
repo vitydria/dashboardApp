@@ -11,34 +11,46 @@
       <mat-label>Username</mat-label>
       <input matInput formControlName="username">
     </mat-form-field>
-    <span *ngIf="isValid('username')" class="errors">Username is required</span>
+    <div class="message-container">
+      <span *ngIf="isValid('username')" class="errors">Username is required</span>
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>First name</mat-label>
       <input matInput formControlName="firstname">
     </mat-form-field>
-    <span *ngIf="isValid('firstname')" class="errors">First name is required</span>
+    <div class="message-container">
+      <span *ngIf="isValid('firstname')" class="errors">First name is required</span>
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Last name</mat-label>
       <input matInput formControlName="lastname">
     </mat-form-field>
-    <span *ngIf="isValid('lastname')" class="errors">Last
-      name is required</span>
+    <div class="message-container">
+      <span *ngIf="isValid('lastname')" class="errors">Last
+        name is required</span>
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email">
     </mat-form-field>
-    <span *ngIf="isValid('email')" class="errors">Email is
-      required</span>
+    <div class="message-container">
+      <span *ngIf="isValid('email')" class="errors">Email is
+        required</span>
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Password</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
     </mat-form-field>
-    <span *ngIf="isValid('password')" class="errors">Password is required</span>
+    <div class="message-container">
+      <span *ngIf=" isValid('password')" class="errors">{{isPasswordValid()}}</span>
+    </div>
     <mat-form-field class="example-full-width" appearance="fill">
       <mat-label>Confirm password</mat-label>
       <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword">
     </mat-form-field>
-    <span *ngIf="isValid('confirmPassword')" class="errors">Confirm password</span>
+    <div class="message-container">
+      <span *ngIf="isValid('confirmPassword')" class="errors">{{confirmPassword()}}</span>
+    </div>
     <button class="mt-4" mat-raised-button color="primary" type="submit">Sign Up</button>
   </form>
 </div>
