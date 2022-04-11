@@ -11,6 +11,7 @@ export class AuthService {
   value: string = '';
   username: string = '';
   pass: string = '';
+  _auth: boolean = false;
 
   signup(form: FormGroup) {
 <<<<<<< HEAD
@@ -25,9 +26,8 @@ export class AuthService {
 
   login(form: FormGroup) {
     for (const key in localStorage) {
-      // Skip built-in properties like length, setItem, etc.
       if (localStorage.hasOwnProperty(key)) {
-        this.value = localStorage.getItem(key)!;
+        this.value = localStorage.getItem(key);
         this.username = JSON.parse(this.value).username;
         this.pass = JSON.parse(this.value).password;
       }
@@ -35,11 +35,15 @@ export class AuthService {
       if (
         this.username === form.value.username &&
         this.pass === form.value.password
-      ) {
-        this.router.navigate(['/todo/dashboard']);
-      } else {
-        form.markAllAsTouched();
-      }
+      )
+        this._auth = true;
     }
+    console.log(this._auth);
+    this.router.navigate(['/todo/dashboard']);
+  }
+
+  logout() {
+    this._auth = false;
+    this.router.navigate(['']);
   }
 }
