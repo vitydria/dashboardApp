@@ -21,7 +21,7 @@ export class LoginComponent {
   }); */
 
   hide: boolean = true;
-  notLogin = false;
+  notLogin: boolean = false;
 
   loginForm: FormGroup = this.formBuilder.group({
     username: ['', [Validators.required, Validators.minLength(3)]],
@@ -43,7 +43,7 @@ export class LoginComponent {
 
     this.authService.login(this.loginForm);
 
-    this.notLogin = true;
+    this.notLogin = !this.authService._auth;
 
     this.loginForm.reset();
     this.loginForm.reset();

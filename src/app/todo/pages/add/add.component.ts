@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs';
+
 import { Cards } from '../../interfaces/cards.interface';
 import { TodoService } from '../../services/todo.service';
 
@@ -19,7 +22,8 @@ import { TodoService } from '../../services/todo.service';
 export class AddComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   newCard: Partial<Cards> = {
@@ -58,5 +62,9 @@ export class AddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activatedRoute.params
+      .pipe(switchMap(({ id }) => this.todoService.getCardById(id)))
+      .subscribe((card) => (this.newCard = card));
+  }
 }

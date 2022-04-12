@@ -2,38 +2,23 @@
   "todo": [
     {
       "title": "Find a pet",
-      "desc": "dog pet or whatever but I need a pet",
+      "desc": "dog, pet or whatever but I need a pet",
       "id": 3
     },
     {
-      "title": "Hola",
-      "desc": "Que tal",
-      "id": 4
-    },
-    {
-      "title": "Haa",
-      "desc": "aaaa",
-      "id": 5
-    },
-    {
-      "title": "Hola",
-      "desc": "Qmas",
-      "id": 6
-    },
-    {
-      "title": "Title",
-      "desc": "Desc",
-      "id": 8
-    },
-    {
-      "title": "hello",
-      "desc": "whats up",
+      "title": "hello i did ",
+      "desc": "whats up, editing my cards",
       "id": 9
     },
     {
-      "title": "buy a pony",
-      "desc": "a pony car",
-      "id": 10
+      "title": "Go to mall",
+      "desc": "have fun",
+      "id": "12"
+    },
+    {
+      "title": "New Angular Task",
+      "desc": "Check the new task",
+      "id": "KfGfJAg"
     }
   ]
 }
