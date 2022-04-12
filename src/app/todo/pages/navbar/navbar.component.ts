@@ -13,14 +13,23 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   showDashboard: boolean = true;
   showAdd: boolean = false;
+  showAddCountries: boolean = false;
 
   show(component: string): void {
     if (component === 'dash') {
       this.showDashboard = true;
       this.showAdd = false;
+      this.showAddCountries = false;
     } else {
-      this.showAdd = true;
-      this.showDashboard = false;
+      if (component === 'add') {
+        this.showAdd = true;
+        this.showDashboard = false;
+        this.showAddCountries = false;
+      } else {
+        this.showAdd = false;
+        this.showDashboard = false;
+        this.showAddCountries = true;
+      }
     }
   }
 
@@ -37,7 +46,6 @@ export class NavbarComponent {
 
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) {}
 }

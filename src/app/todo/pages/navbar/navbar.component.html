@@ -10,6 +10,9 @@
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">add
         </mat-icon> Add
       </button>
+      <button mat-list-item (click)="show('addCountries')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">flag</mat-icon>Add Country
+      </button>
       <button mat-list-item>
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">chat</mat-icon>Messages
       </button>
@@ -30,5 +33,6 @@
     <!-- Add Content Here -->
     <app-dashboard *ngIf="showDashboard"></app-dashboard>
     <app-add *ngIf="showAdd"></app-add>
+    <app-add-countries *ngIf="showAddCountries"></app-add-countries>
   </mat-sidenav-content>
 </mat-sidenav-container>
