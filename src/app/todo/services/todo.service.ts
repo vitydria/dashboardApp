@@ -21,10 +21,6 @@ export class TodoService {
     return this.http.get<Cards[]>('http://localhost:3000/todo');
   }
 
-  getCardById(id: number): Observable<Cards> {
-    return this.http.get<Cards>(`http://localhost:3000/todo/${id}`);
-  }
-
   deleteCard(id: number): Observable<any> {
     return this.http.delete<any>(`http://localhost:3000/todo/${id}`);
   }

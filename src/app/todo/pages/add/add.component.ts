@@ -62,9 +62,5 @@ export class AddComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(switchMap(({ id }) => this.todoService.getCardById(id)))
-      .subscribe((card) => (this.newCard = card));
-  }
+  ngOnInit(): void {}
 }
