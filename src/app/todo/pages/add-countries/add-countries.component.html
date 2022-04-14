@@ -1,27 +1,34 @@
-<div class="flex flex-column align-items-center">
-  <form [formGroup]="countryForm" (ngSumbit)="submit()" class="example-form">
-    <h3>Add a country</h3>
-    <div formArrayName="newCountry" class="flex flex-column justify-content-center align-items-center">
-      <div *ngFor="let country of newCountry.controls; let i = index;">
-        <div>
-          <label>Name: </label>
-          <input formControlName="name">
-        </div>
-        <div>
-          <label>Abbreviation: </label>
-          <input formControlName="abb">
-        </div>
-        <div>
-          <label>Population: </label>
-          <input formControlName="population">
-        </div>
-        <div>
-          <label>Continent: </label>
-          <input formControlName="continent">
+<div div class="flex flex-column flex-direction-start align-items-start mt-5 mx-5">
+  <form [formGroup]="countryForm" (ngSubmit)="onSubmit()">
+    <div class="flex flex-row" formArrayName="country">
+      <div *ngFor="let countries of country.controls; let i = index">
+        <div class="flex flex-column mx-2" [formGroupName]="i">
+          <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput type="text" formControlName="name">
+          </mat-form-field>
+          <span *ngIf="isValid(i, 'name')" class="errors">Name {{errorMessage(i, "name")}}</span>
+          <mat-form-field>
+            <mat-label>Abbreviation</mat-label>
+            <input matInput type="text" formControlName="abbreviation">
+          </mat-form-field>
+          <span *ngIf="isValid(i, 'abbreviation')" class="errors">Abbreviation {{errorMessage(i,
+            "abbreviation")}}</span>
+          <mat-form-field>
+            <mat-label>Population</mat-label>
+            <input matInput type="text" formControlName="population">
+          </mat-form-field>
+          <span *ngIf="isValid(i, 'population')" class="errors">Population {{errorMessage(i, "population")}}</span>
+          <mat-form-field>
+            <mat-label>Continent</mat-label>
+            <input matInput type="text" formControlName="continent">
+          </mat-form-field>
+          <span *ngIf="isValid(i, 'continent')" class="errors">Continent {{errorMessage(i, "continent")}}</span>
+          <button mat-button color="warn" (click)="removeCountry(i)">Remove</button>
         </div>
       </div>
     </div>
-    <button (click)="addNewCountry()">Add</button>
-    <button type="submit" (click)="submit()">Submit</button>
+    <button mat-button color="accent" *ngIf="hideSubmit()" type="submit">Submit</button>
   </form>
+  <button mat-button color="primary" (click)="addCountry()">Add</button>
 </div>

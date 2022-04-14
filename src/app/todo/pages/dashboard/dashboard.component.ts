@@ -39,7 +39,6 @@ export class DashboardComponent implements OnInit {
 
   updateCard(card: Cards): void {
     this.id = -1;
-    console.log(card);
     card.title = this.getTitle();
     card.desc = this.getDesc();
     this.todoService.updateCard(card).subscribe((resp) => {

@@ -71,8 +71,7 @@ export class SignUpComponent {
     }
 
     this.authService.signup(this.signupForm);
-    this.signupForm.reset();
-
+    console.log(this.signupForm.value);
     this.signupForm.reset();
 
     Object.keys(this.signupForm.controls).forEach((key) => {

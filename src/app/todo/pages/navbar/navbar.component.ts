@@ -11,9 +11,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  showDashboard: boolean = true;
+  showDashboard: boolean = false;
   showAdd: boolean = false;
-  showAddCountries: boolean = false;
+  showAddCountries: boolean = true;
 
   show(component: string): void {
     if (component === 'dash') {

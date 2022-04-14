@@ -17,3 +17,11 @@ body {
 .mat-form-field-wrapper {
   padding-bottom: 0.5rem;
 }
+
+.errors {
+  font-size: smaller;
+  color: rgb(255, 48, 48);
+  align-self: flex-start;
+  padding-bottom: 5px;
+}
+

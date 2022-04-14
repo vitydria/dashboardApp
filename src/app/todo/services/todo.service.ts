@@ -2,12 +2,23 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cards } from '../interfaces/cards.interface';
+import { Country } from '../interfaces/countries.interfaces';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
   constructor(private http: HttpClient) {}
+
+  countries: Country[] = [];
+
+  addCountries(ct: Country[]) {
+    ct.forEach((country) => {
+      this.countries.push(country);
+    });
+
+    console.log(this.countries);
+  }
 
   addCard(card: Partial<Cards>): Observable<Cards> {
     return this.http.post<Cards>('http://localhost:3000/todo', card);

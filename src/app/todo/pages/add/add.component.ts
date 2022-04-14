@@ -9,15 +9,7 @@ import { TodoService } from '../../services/todo.service';
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
-  styles: [
-    `
-      .errors {
-        font-size: smaller;
-        color: rgb(255, 48, 48);
-        align-self: flex-start;
-      }
-    `,
-  ],
+  styles: [],
 })
 export class AddComponent implements OnInit {
   constructor(

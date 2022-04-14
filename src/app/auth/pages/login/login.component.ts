@@ -15,11 +15,6 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  /* loginForm: FormGroup = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-  }); */
-
   hide: boolean = true;
   notLogin: boolean = false;
 
