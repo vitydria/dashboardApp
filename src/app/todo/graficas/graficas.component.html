@@ -1,0 +1,11 @@
+<div class="m-2">
+  <button mat-button [matMenuTriggerFor]="menu">Graphics</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="barSelect()">Bar</button>
+    <button mat-menu-item (click)="donutSelect()">Donut</button>
+    <button mat-menu-item (click)="tableSelect()">Table</button>
+  </mat-menu>
+  <app-graficas-table *ngIf="table"></app-graficas-table>
+  <app-graficas-bar *ngIf="bar"></app-graficas-bar>
+  <app-graficas-donut *ngIf="donut"></app-graficas-donut>
+</div>

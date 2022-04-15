@@ -10,7 +10,20 @@ import { Country } from '../interfaces/countries.interfaces';
 export class TodoService {
   constructor(private http: HttpClient) {}
 
-  countries: Country[] = [];
+  countries: Country[] = [
+    {
+      name: 'España',
+      abbreviation: 'ES',
+      population: 243143253,
+      continent: 'Europa',
+    },
+    {
+      name: 'Francia',
+      abbreviation: 'FR',
+      population: 93423253,
+      continent: 'Europa',
+    },
+  ];
 
   addCountries(ct: Country[]) {
     ct.forEach((country) => {
@@ -18,6 +31,10 @@ export class TodoService {
     });
 
     console.log(this.countries);
+  }
+
+  getItems() {
+    return this.countries;
   }
 
   addCard(card: Partial<Cards>): Observable<Cards> {
