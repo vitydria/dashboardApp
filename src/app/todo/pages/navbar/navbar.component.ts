@@ -13,23 +13,33 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   showDashboard: boolean = false;
   showAdd: boolean = false;
-  showAddCountries: boolean = true;
+  showAddCountries: boolean = false;
+  showCountries: boolean = true;
 
   show(component: string): void {
     if (component === 'dash') {
       this.showDashboard = true;
       this.showAdd = false;
       this.showAddCountries = false;
-    } else {
-      if (component === 'add') {
-        this.showAdd = true;
-        this.showDashboard = false;
-        this.showAddCountries = false;
-      } else {
-        this.showAdd = false;
-        this.showDashboard = false;
-        this.showAddCountries = true;
-      }
+      this.showCountries = false;
+    }
+    if (component === 'add') {
+      this.showAdd = true;
+      this.showDashboard = false;
+      this.showAddCountries = false;
+      this.showCountries = false;
+    }
+    if (component === 'countries') {
+      this.showAdd = false;
+      this.showDashboard = false;
+      this.showAddCountries = true;
+      this.showCountries = false;
+    }
+    if (component === 'data') {
+      this.showAdd = false;
+      this.showDashboard = false;
+      this.showAddCountries = false;
+      this.showCountries = true;
     }
   }
 

@@ -5,7 +5,7 @@
     <button mat-menu-item (click)="donutSelect()">Donut</button>
     <button mat-menu-item (click)="tableSelect()">Table</button>
   </mat-menu>
+  <app-graficas-donut *ngIf="donut"></app-graficas-donut>
   <app-graficas-table *ngIf="table"></app-graficas-table>
   <app-graficas-bar *ngIf="bar"></app-graficas-bar>
-  <app-graficas-donut *ngIf="donut"></app-graficas-donut>
 </div>

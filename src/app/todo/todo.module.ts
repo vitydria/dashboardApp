@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { NgChartsModule } from 'ng2-charts';
-
 import { MaterialModule } from '../material/material.module';
 import { TodoRoutingModule } from './todo-routing.module';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { TodoService } from '../services/todo.service';
 
 @Component({
   selector: 'app-graficas-donut',
@@ -7,23 +8,23 @@ import { ChartData, ChartEvent, ChartType } from 'chart.js';
   styleUrls: ['./graficas-donut.component.scss'],
 })
 export class GraficasDonutComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
-  public doughnutChartLabels: string[] = [
-    'Download Sales',
-    'In-Store Sales',
-    'Mail-Order Sales',
-  ];
+  public doughnutChartLabels: string[] = [];
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
-    datasets: [
-      { data: [350, 450, 100] },
-      { data: [50, 150, 120] },
-      { data: [250, 130, 70] },
-    ],
+    datasets: [{ data: [] }],
   };
   public doughnutChartType: ChartType = 'doughnut';
+
+  getData() {
+    let labels = [];
+    let data = [];
+    const loadData = this.todoService.getItems();
+    labels = loadData.map(({ name }) => name);
+    data = loadData.map(({ population }) => population);
+    console.log(data);
+    this.doughnutChartLabels = labels;
+    this.doughnutChartData.datasets[0].data = data;
+  }
 
   // events
   public chartClicked({
@@ -44,5 +45,10 @@ export class GraficasDonutComponent implements OnInit {
     active: {}[];
   }): void {
     console.log(event, active);
+  }
+
+  constructor(private todoService: TodoService) {}
+  ngOnInit(): void {
+    this.getData();
   }
 }

@@ -12,6 +12,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatNativeDateModule } from '@angular/material/core';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [],
@@ -28,6 +32,10 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatMenuModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatNativeDateModule,
+    DragDropModule,
   ],
   exports: [
     MatButtonModule,
@@ -42,6 +50,10 @@ import { MatTableModule } from '@angular/material/table';
     MatCardModule,
     MatMenuModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatNativeDateModule,
+    DragDropModule,
   ],
 })
 export class MaterialModule {}
