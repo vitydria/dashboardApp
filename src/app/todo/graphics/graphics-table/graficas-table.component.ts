@@ -3,8 +3,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatTableDataSource } from '@angular/material/table';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { MatSort, Sort } from '@angular/material/sort';
-import { Country } from '../interfaces/countries.interfaces';
-import { TodoService } from '../services/todo.service';
+import { Country } from '../../interfaces/countries.interfaces';
+import { TodoService } from '../../services/todo.service';
 import { MatPaginator } from '@angular/material/paginator';
 
 @Component({

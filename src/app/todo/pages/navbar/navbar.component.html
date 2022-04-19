@@ -17,6 +17,9 @@
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">flag</mat-icon>Show Countries
       </button>
       <button mat-list-item>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">map</mat-icon>Map
+      </button>
+      <button mat-list-item>
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">chat</mat-icon>Messages
       </button>
       <button mat-list-item>
@@ -34,9 +37,10 @@
       <button mat-raised-button class="button-color" (click)="logout()">Log out</button>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <app-dashboard *ngIf="showDashboard"></app-dashboard>
+    <!-- <app-dashboard *ngIf="showDashboard"></app-dashboard>
     <app-add *ngIf="showAdd"></app-add>
     <app-add-countries *ngIf="showAddCountries"></app-add-countries>
-    <app-graficas *ngIf="showCountries"></app-graficas>
+    <app-graficas *ngIf="showCountries"></app-graficas> -->
+    <app-map></app-map>
   </mat-sidenav-content>
 </mat-sidenav-container>

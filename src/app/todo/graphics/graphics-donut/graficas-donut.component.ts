@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
-import { TodoService } from '../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-graficas-donut',
@@ -22,7 +22,7 @@ export class GraficasDonutComponent implements OnInit {
     labels = loadData.map(({ name }) => name);
     data = loadData.map(({ population }) => population);
     console.log(data);
-    this.doughnutChartLabels = labels;
+    this.doughnutChartData.labels = labels;
     this.doughnutChartData.datasets[0].data = data;
   }
 

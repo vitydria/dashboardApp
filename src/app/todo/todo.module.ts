@@ -9,10 +9,11 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NavbarComponent } from './pages/navbar/navbar.component';
 import { AddComponent } from './pages/add/add.component';
 import { AddCountriesComponent } from './pages/add-countries/add-countries.component';
-import { GraficasComponent } from './graficas/graficas.component';
-import { GraficasBarComponent } from './graficas-bar/graficas-bar.component';
-import { GraficasDonutComponent } from './graficas-donut/graficas-donut.component';
-import { GraficasTableComponent } from './graficas-table/graficas-table.component';
+import { GraficasComponent } from './graphics/graphics-menu/graficas.component';
+import { GraficasBarComponent } from './graphics/graphics-bar/graficas-bar.component';
+import { GraficasDonutComponent } from './graphics/graphics-donut/graficas-donut.component';
+import { GraficasTableComponent } from './graphics/graphics-table/graficas-table.component';
+import { MapsModule } from './maps/maps.module';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { GraficasTableComponent } from './graficas-table/graficas-table.componen
   ],
   imports: [
     CommonModule,
+    MapsModule,
     MaterialModule,
     TodoRoutingModule,
     ReactiveFormsModule,
