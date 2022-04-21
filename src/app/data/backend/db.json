@@ -20,5 +20,15 @@
       "desc": "Check the new task, NOW!",
       "id": "KfGfJAg"
     }
-  ]
+  ],
+  "countries": [
+    {
+      "id": 1,
+      "name": "España",
+      "abbreviation": "ES",
+      "population": 23456535,
+      "continent": "Europe"
+    }
+  ],
+  "distances": [{ "id": 1, "distance": 0, "to": 123.21, "from": 1434 }]
 }

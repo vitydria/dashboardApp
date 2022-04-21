@@ -1,14 +1,16 @@
-<div id="map" class="map-container">
+<div id="map" class="map-container"></div>
+<div class="marker-div">
+  <button mat-raised-button color="accent" (click)="addMarker()" class="marker-btn">Add marker</button>
+  <ul>
+    <li *ngFor="let marker of markers; let i = index" [ngStyle]="{
+        'background-color': marker.color
+      }" (click)="goToMarker(marker.marker)">Marker {{i + 1}}</li>
+  </ul>
 </div>
-<div class="row">
-  <div class="col-12">
-    <label class="form-label">Zoom: 16
-      -Lng, Lt: [123, 456]
-    </label>
-    <input type="range" class="form-range">
-  </div>
-  <div class="col-12">
-    <button class="btn btn-primary float-end" (click)="zoomOut()"> - </button>
-    <button class="btn btn-primary" (click)="zoomIn()"> + </button>
-  </div>
+<div class="distance-container">
+  <ul *ngIf="distance.length > 0">
+    <li *ngFor="let pos of distance; let i = index">
+      Distance: {{pos | number:'1.2-2'}}
+    </li>
+  </ul>
 </div>

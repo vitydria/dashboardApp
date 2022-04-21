@@ -33,6 +33,10 @@ export class TodoService {
     console.log(this.countries);
   }
 
+  addCountry(country: Partial<Country>): Observable<Cards> {
+    return this.http.post<Cards>('http://localhost:3000/todo', country);
+  }
+
   getItems() {
     return this.countries;
   }
