@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Cards } from '../interfaces/cards.interface';
 import { Country } from '../interfaces/countries.interfaces';
+import { interval, firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,35 +11,16 @@ import { Country } from '../interfaces/countries.interfaces';
 export class TodoService {
   constructor(private http: HttpClient) {}
 
-  countries: Country[] = [
-    {
-      name: 'España',
-      abbreviation: 'ES',
-      population: 243143253,
-      continent: 'Europa',
-    },
-    {
-      name: 'Francia',
-      abbreviation: 'FR',
-      population: 93423253,
-      continent: 'Europa',
-    },
-  ];
+  getCountries(): Observable<Country[]> {
+    return this.http.get<Country[]>('http://localhost:3000/countries');
+  }
 
-  addCountries(ct: Country[]) {
-    ct.forEach((country) => {
-      this.countries.push(country);
+  addCountries(country: Partial<Country[]>): void {
+    country.forEach(async (value) => {
+      await firstValueFrom(
+        this.http.post<Country>('http://localhost:3000/countries', value)
+      );
     });
-
-    console.log(this.countries);
-  }
-
-  addCountry(country: Partial<Country>): Observable<Cards> {
-    return this.http.post<Cards>('http://localhost:3000/todo', country);
-  }
-
-  getItems() {
-    return this.countries;
   }
 
   addCard(card: Partial<Cards>): Observable<Cards> {

@@ -4,6 +4,8 @@ import { BaseChartDirective } from 'ng2-charts';
 
 import DataLabelsPlugin from 'chartjs-plugin-datalabels';
 import { TodoService } from '../../services/todo.service';
+import { map } from 'rxjs/operators';
+import { Country } from '../../interfaces/countries.interfaces';
 
 @Component({
   selector: 'app-graficas-bar',
@@ -35,6 +37,7 @@ export class GraficasBarComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartPlugins = [DataLabelsPlugin];
   data: any = [];
+  isLoad: boolean = false;
 
   public barChartData: ChartData<'bar'> = {
     labels: ['Population'],
@@ -42,12 +45,20 @@ export class GraficasBarComponent implements OnInit {
   };
 
   getData() {
-    const loadData = this.todoService.getItems();
-    this.data = loadData.map(({ name, population }) => ({
-      data: [population],
-      label: name,
-    }));
-    this.barChartData.datasets = this.data;
+    this.todoService
+      .getCountries()
+      .pipe(
+        map((countries) => {
+          return countries.map(({ population, name }) => ({
+            data: [population],
+            label: name,
+          }));
+        })
+      )
+      .subscribe((chartData) => {
+        this.barChartData.datasets = chartData;
+        this.isLoad = true;
+      });
   }
 
   // events
@@ -57,9 +68,7 @@ export class GraficasBarComponent implements OnInit {
   }: {
     event?: ChartEvent;
     active?: {}[];
-  }): void {
-    console.log(event, active);
-  }
+  }): void {}
 
   public chartHovered({
     event,
@@ -67,9 +76,7 @@ export class GraficasBarComponent implements OnInit {
   }: {
     event?: ChartEvent;
     active?: {}[];
-  }): void {
-    console.log(event, active);
-  }
+  }): void {}
 
   ngOnInit(): void {
     this.getData();

@@ -7,10 +7,11 @@
       }" (click)="goToMarker(marker.marker)">Marker {{i + 1}}</li>
   </ul>
 </div>
-<div class="distance-container">
-  <ul *ngIf="distance.length > 0">
+<div *ngIf="distance.length > 0" class="distance-container flex flex-column align-items-center p-2">
+  <ul>
     <li *ngFor="let pos of distance; let i = index">
-      Distance: {{pos | number:'1.2-2'}}
+      Distance: {{pos.distance | number:'1.2-2'}} km
     </li>
   </ul>
+  <button mat-raised-button color="accent" (click)="saveData()" class="mt-1 mx-auto">Save</button>
 </div>

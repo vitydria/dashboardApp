@@ -1,6 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { map } from 'rxjs/operators';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 import { TodoService } from '../../services/todo.service';
 import { Cards } from 'src/app/todo/interfaces/cards.interface';
 
@@ -11,15 +9,6 @@ import { Cards } from 'src/app/todo/interfaces/cards.interface';
 })
 export class DashboardComponent implements OnInit {
   cards: Cards[] = [];
-  /** Based on the screen size, switch from standard to one column per row */
-  /* colsAndRows = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        return { cols: 1, rows: 1 };
-      }
-      return { cols: 2, rows: 1 };
-    })
-  ); */
 
   @ViewChild('title') title: ElementRef;
   @ViewChild('desc') desc: ElementRef;
@@ -55,10 +44,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  constructor(
-    /* private breakpointObserver: BreakpointObserver, */
-    private todoService: TodoService
-  ) {}
+  constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
     this.todoService.getCard().subscribe((resp) => {

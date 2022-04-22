@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChartData, ChartEvent, ChartType } from 'chart.js';
+import { map } from 'rxjs';
+import { Country } from '../../interfaces/countries.interfaces';
 import { TodoService } from '../../services/todo.service';
 
 @Component({
@@ -16,14 +18,12 @@ export class GraficasDonutComponent implements OnInit {
   public doughnutChartType: ChartType = 'doughnut';
 
   getData() {
-    let labels = [];
-    let data = [];
-    const loadData = this.todoService.getItems();
-    labels = loadData.map(({ name }) => name);
-    data = loadData.map(({ population }) => population);
-    console.log(data);
-    this.doughnutChartData.labels = labels;
-    this.doughnutChartData.datasets[0].data = data;
+    this.todoService.getCountries().subscribe((countries) => {
+      this.doughnutChartData.labels = countries.map(({ name }) => name);
+      this.doughnutChartData.datasets[0].data = countries.map(
+        ({ population }) => population
+      );
+    });
   }
 
   // events
@@ -33,9 +33,7 @@ export class GraficasDonutComponent implements OnInit {
   }: {
     event: ChartEvent;
     active: {}[];
-  }): void {
-    console.log(event, active);
-  }
+  }): void {}
 
   public chartHovered({
     event,
@@ -43,12 +41,11 @@ export class GraficasDonutComponent implements OnInit {
   }: {
     event: ChartEvent;
     active: {}[];
-  }): void {
-    console.log(event, active);
-  }
+  }): void {}
 
-  constructor(private todoService: TodoService) {}
   ngOnInit(): void {
     this.getData();
   }
+
+  constructor(private todoService: TodoService) {}
 }

@@ -1,6 +1,6 @@
 <div>
   <div>
-    <div style="display: block;" class="inner">
+    <div style="display: block;" class="inner" *ngIf="doughnutChartData.labels.length > 0">
       <canvas baseChart [data]="doughnutChartData" [type]="doughnutChartType">
       </canvas>
     </div>

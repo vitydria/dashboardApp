@@ -1,9 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AuthService } from '../../../auth/services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -11,10 +10,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  showDashboard: boolean = false;
+  showDashboard: boolean = true;
   showAdd: boolean = false;
   showAddCountries: boolean = false;
-  showCountries: boolean = true;
+  showCountries: boolean = false;
+  showMap: boolean = false;
+  showDistances: boolean = false;
+
+  isAdminLogged: boolean = this.authService._isAdmin;
 
   show(component: string): void {
     if (component === 'dash') {
@@ -22,24 +25,48 @@ export class NavbarComponent {
       this.showAdd = false;
       this.showAddCountries = false;
       this.showCountries = false;
+      this.showMap = false;
+      this.showDistances = false;
     }
     if (component === 'add') {
       this.showAdd = true;
       this.showDashboard = false;
       this.showAddCountries = false;
       this.showCountries = false;
+      this.showMap = false;
+      this.showDistances = false;
     }
     if (component === 'countries') {
       this.showAdd = false;
       this.showDashboard = false;
       this.showAddCountries = true;
       this.showCountries = false;
+      this.showMap = false;
+      this.showDistances = false;
     }
     if (component === 'data') {
       this.showAdd = false;
       this.showDashboard = false;
       this.showAddCountries = false;
       this.showCountries = true;
+      this.showMap = false;
+      this.showDistances = false;
+    }
+    if (component === 'map') {
+      this.showAdd = false;
+      this.showDashboard = false;
+      this.showAddCountries = false;
+      this.showCountries = false;
+      this.showMap = true;
+      this.showDistances = false;
+    }
+    if (component === 'distances') {
+      this.showAdd = false;
+      this.showDashboard = false;
+      this.showAddCountries = false;
+      this.showCountries = false;
+      this.showMap = false;
+      this.showDistances = true;
     }
   }
 

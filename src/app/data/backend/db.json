@@ -1,4 +1,62 @@
 {
+  "countries": [
+    {
+      "id": 1,
+      "name": "España",
+      "abbreviation": "ES",
+      "population": 23456535,
+      "continent": "Europe"
+    },
+    {
+      "id": 2,
+      "name": "France",
+      "abbreviation": "FR",
+      "population": 3465764,
+      "continent": "Europe"
+    },
+    {
+      "name": "Venezuela",
+      "abbreviation": "VE|",
+      "population": "30000000",
+      "continent": "Sudamerica",
+      "id": 3
+    },
+    {
+      "name": "Georgia",
+      "abbreviation": "GE",
+      "population": "5456256",
+      "continent": "Europe",
+      "id": 4
+    },
+    {
+      "name": "Bolivia",
+      "abbreviation": "BA",
+      "population": "342563",
+      "continent": "Sudamerica",
+      "id": 5
+    },
+    {
+      "name": "Peru",
+      "abbreviation": "PE",
+      "population": "3456",
+      "continent": "Sudamerica",
+      "id": 6
+    },
+    {
+      "name": "Portugal",
+      "abbreviation": "PT",
+      "population": "345678",
+      "continent": "Europa",
+      "id": 7
+    },
+    {
+      "name": "Colombia",
+      "abbreviation": "CO",
+      "population": "324567",
+      "continent": "Sudamerica",
+      "id": 8
+    }
+  ],
   "todo": [
     {
       "title": "Find a pet",
@@ -21,14 +79,42 @@
       "id": "KfGfJAg"
     }
   ],
-  "countries": [
+  "distances": [
     {
       "id": 1,
-      "name": "España",
-      "abbreviation": "ES",
-      "population": 23456535,
-      "continent": "Europe"
+      "distance": 0,
+      "to": [
+        123.21,
+        345
+      ],
+      "from": [
+        123.21,
+        345
+      ]
+    },
+    {
+      "to": [
+        7.7761745840835985,
+        -72.21477596803076
+      ],
+      "from": [
+        7.776321657887991,
+        -72.21400247647492
+      ],
+      "distance": 0.08677255194364075,
+      "id": 2
+    },
+    {
+      "to": [
+        7.776640612818909,
+        -72.21483945661089
+      ],
+      "from": [
+        7.7764917605621235,
+        -72.21329449918294
+      ],
+      "distance": 0.1710146020124684,
+      "id": 3
     }
-  ],
-  "distances": [{ "id": 1, "distance": 0, "to": 123.21, "from": 1434 }]
+  ]
 }

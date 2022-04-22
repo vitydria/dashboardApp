@@ -160,8 +160,12 @@ export class AddCountriesComponent {
       return;
     }
 
-    this.todoService.addCountries(this.countryForm.value.country);
 
-    console.log(this.countryForm.value.country);
+
+    /*  this.todoService.addCountries(this.countryForm.value.country);
+    this.countryForm.reset();
+    Object.keys(this.country.controls).forEach((key) => {
+      this.country.get(key)!.setErrors(null);
+    }); */
   }
 }

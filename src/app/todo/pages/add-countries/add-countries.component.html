@@ -1,6 +1,6 @@
 <div div class="flex flex-column flex-direction-start align-items-start mt-5 mx-5">
   <form [formGroup]="countryForm" (ngSubmit)="onSubmit()">
-    <div class="flex flex-row" formArrayName="country">
+    <div class="flex flex-row col-3" formArrayName="country">
       <div *ngFor="let countries of country.controls; let i = index">
         <div class="flex flex-column mx-2" [formGroupName]="i">
           <mat-form-field>

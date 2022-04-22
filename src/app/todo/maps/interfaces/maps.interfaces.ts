@@ -1,6 +1,6 @@
 export interface Distances {
   id?: number;
-  to: number;
-  from: number;
+  to: [number, number];
+  from: [number, number];
   distance: number;
 }

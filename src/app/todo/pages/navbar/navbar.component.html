@@ -16,8 +16,11 @@
       <button mat-list-item (click)="show('data')">
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">flag</mat-icon>Show Countries
       </button>
-      <button mat-list-item>
+      <button mat-list-item (click)="show('map')">
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">map</mat-icon>Map
+      </button>
+      <button mat-list-item (click)="show('distances')">
+        <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">table</mat-icon>Distances
       </button>
       <button mat-list-item>
         <mat-icon aria-hidden="false" aria-label="Example home icon" class="icon-view">chat</mat-icon>Messages
@@ -37,10 +40,14 @@
       <button mat-raised-button class="button-color" (click)="logout()">Log out</button>
     </mat-toolbar>
     <!-- Add Content Here -->
-    <!-- <app-dashboard *ngIf="showDashboard"></app-dashboard>
+    <app-dashboard *ngIf="showDashboard"></app-dashboard>
     <app-add *ngIf="showAdd"></app-add>
     <app-add-countries *ngIf="showAddCountries"></app-add-countries>
-    <app-graficas *ngIf="showCountries"></app-graficas> -->
-    <app-map></app-map>
+    <app-graficas *ngIf="showCountries"></app-graficas>
+    <app-map *ngIf="showMap && isAdminLogged"></app-map>
+    <div *ngIf="showMap && !isAdminLogged" class="flex justify-content-center mt-4">
+      <h1 class="display-4">THIS FUNCTION IS ONLY AVAILABLE TO ADMINS</h1>
+    </div>
+    <app-distance-table *ngIf="showDistances"></app-distance-table>
   </mat-sidenav-content>
 </mat-sidenav-container>

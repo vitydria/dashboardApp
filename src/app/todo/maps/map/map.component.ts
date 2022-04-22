@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import * as mapboxgl from 'mapbox-gl';
 import * as turf from '@turf/turf';
 import { environment } from 'src/environments/environment';
@@ -27,6 +27,13 @@ interface Marker {
         right: 800px;
         z-index: 999;
         background-color: black;
+        border-radius: 5%;
+        text-decoration: none;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 2px;
       }
 
       .btn {
@@ -67,7 +74,9 @@ export class MapComponent implements OnInit {
   zoomLevel: number = 16;
   center: [number, number] = [-72.21477596803076, 7.7761745840835985];
   markers: Marker[] = [];
-  distance: number[] = [];
+  distance: Distances[] = [];
+  @Output() sendData: EventEmitter<Distances[]> = new EventEmitter();
+
   zoomOut() {
     this.map.zoomOut();
     this.zoomLevel = this.map.getZoom();
@@ -88,24 +97,37 @@ export class MapComponent implements OnInit {
     this.markers.push({ color: color, marker: newMarker });
   }
 
+  saveData(): void {
+    this.mapService.addDistances(this.distance);
+    this.distance = [];
+    this.markers.forEach((marker) => {
+      marker.marker.remove();
+    });
+  }
+
   knowTheDistance() {
-    const distanceArr: number[] = [];
+    let distanceArr: Distances[] = [];
+
     this.markers.forEach((value, index) => {
       if (index === 0 || index % 2 === 0) {
         const to = value.marker.getLngLat();
-        const form = this.markers[index + 1]!.marker.getLngLat();
+        const from = this.markers[index + 1]!.marker.getLngLat();
 
-        if (form !== undefined) {
+        if (from !== undefined) {
           const distance = turf.distance(
             turf.point([to.lng, to.lat]),
-            turf.point([form.lng, form.lat])
+            turf.point([from.lng, from.lat])
           );
 
-          distanceArr.push(distance);
-          console.log(distanceArr);
+          distanceArr.push({
+            to: [to.lat, to.lng],
+            from: [from.lat, from.lng],
+            distance,
+          });
         }
       }
     });
+
     this.distance = distanceArr;
   }
 
@@ -123,14 +145,19 @@ export class MapComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.map.off('move', () => {});
+    this.map.off('mouseup', () => {});
+  }
+
   ngAfterViewInit(): void {
     this.map.on('move', (event) => {
       const target = event.target;
-      this.center[0] = target.getCenter().lat;
-      this.center[1] = target.getCenter().lng;
+      const { lng, lat } = target.getCenter();
+      this.center = [lng, lat];
     });
 
-    this.map.on('render', () => {
+    this.map.on('mouseup', () => {
       this.knowTheDistance();
     });
   }
