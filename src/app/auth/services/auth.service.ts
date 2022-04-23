@@ -51,6 +51,6 @@ export class AuthService {
   logout() {
     this._auth = false;
     this._isAdmin = false;
-    this.router.navigate(['']);
+    this.router.navigate(['auth/login']);
   }
 }

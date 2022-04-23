@@ -21,7 +21,7 @@ export class AuthGuard implements CanLoad, CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService._auth) {
+    if (this.authService._auth === true) {
       return true;
     } else return false;
   }
@@ -30,7 +30,7 @@ export class AuthGuard implements CanLoad, CanActivate {
     route: Route,
     segments: UrlSegment[]
   ): Observable<boolean> | Promise<boolean> | boolean {
-    if (this.authService._auth) {
+    if (this.authService._auth === true) {
       return true;
     } else return false;
   }
